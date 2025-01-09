@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SignInButton } from "./SignInButton";
+import { AuthStatus } from "./AuthStatus";
 
 export function Navbar() {
   return (
@@ -14,7 +14,7 @@ export function Navbar() {
             </Link>
           </div>
           <div className="flex items-center">
-            <SignInButton text="Sign In" />
+            <AuthStatus />
           </div>
         </div>
       </div>
