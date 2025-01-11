@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/Navbar";
+import { Navbar } from "@/components/Navigation/Navbar";
 import Image from "next/image";
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
             <div>
               <h1 className="text-4xl font-extrabold text-primary sm:text-5xl md:text-6xl">
-                Build Your Perfect Resume with AI
+                Build Your Perfect Resume With AI
               </h1>
               <p className="mt-3 text-base text-muted-foreground sm:mt-5 sm:text-lg md:mt-5 md:text-xl">
                 Create a professional, tailored resume in minutes with our

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AuthStatus } from "./AuthStatus";
+import { AuthStatus } from "../AuthStatus";
 
 export function Navbar() {
   return (
