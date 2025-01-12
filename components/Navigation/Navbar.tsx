@@ -2,6 +2,7 @@ import Link from "next/link";
 import { AuthStatus } from "./AuthStatus";
 import NavLinks from "./NavLinks";
 import { MobileNav } from "./MobileNav";
+import { ModeToggle } from "../ui/mode-toggle";
 
 export function Navbar() {
   return (
@@ -20,7 +21,8 @@ export function Navbar() {
             </Link>
           </div>
         </div>
-        <div className="flex items-center justify-end px-6 md:px-0 space-x-6">
+        <div className="flex items-center justify-end px-6 md:px-0 space-x-8">
+          <ModeToggle />
           <AuthStatus />
           <div className="hidden md:inline">
             <NavLinks />
