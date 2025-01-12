@@ -54,8 +54,8 @@ export default async function LoginForm({
                     }
                   }}
                 >
-                  <Button type="submit" className="w-full">
-                    <span>Sign in with {provider.name}</span>
+                  <Button variant="outline" type="submit" className="w-full">
+                    Sign in with {provider.name}
                   </Button>
                 </form>
               ))}
