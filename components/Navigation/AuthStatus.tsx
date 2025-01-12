@@ -1,4 +1,3 @@
-import { Button } from "./ui/button";
 import Link from "next/link";
 import { User } from "@auth/core/types";
 import UserAvatarDropDown from "@/components/UserAvatarDropdown";
@@ -10,9 +9,9 @@ export async function AuthStatus() {
 
   if (!user) {
     return (
-      <Button asChild>
-        <Link href="/signIn">Sign In</Link>
-      </Button>
+      <li className="flex items-center text-md text-secondary-foreground font-medium transition-colors hover:text-primary">
+        <Link href="/signIn">Log In</Link>
+      </li>
     );
   }
 

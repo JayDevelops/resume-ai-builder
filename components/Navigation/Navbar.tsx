@@ -1,20 +1,29 @@
 import Link from "next/link";
-import { AuthStatus } from "../AuthStatus";
+import { AuthStatus } from "./AuthStatus";
+import NavLinks from "./NavLinks";
+import { MobileNav } from "./MobileNav";
 
 export function Navbar() {
   return (
-    <nav className="bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex">
-            <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-xl font-bold text-gray-800">
+    <nav className="sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-14 items-center justify-between">
+        <div className="flex items-center">
+          <MobileNav />
+          <div className="hidden md:flex">
+            <Link
+              href="/"
+              className="md:ml-14 mr-6 flex items-center space-x-2"
+            >
+              <span className="hidden font-bold sm:inline-block text-lg">
                 AI Resume Builder
               </span>
             </Link>
           </div>
-          <div className="flex items-center">
-            <AuthStatus />
+        </div>
+        <div className="flex items-center justify-end px-6 md:px-0 space-x-6">
+          <AuthStatus />
+          <div className="hidden md:inline">
+            <NavLinks />
           </div>
         </div>
       </div>

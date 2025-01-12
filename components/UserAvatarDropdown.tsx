@@ -10,9 +10,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOut, User } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { User as AuthUser } from "@auth/core/types";
 import Link from "next/link";
+import { DropdownMenuGroup } from "@radix-ui/react-dropdown-menu";
 
 export default function UserAvatarDropDown({
   user,
@@ -23,7 +24,6 @@ export default function UserAvatarDropDown({
     return null;
   }
 
-  // Get initials for avatar fallback
   const initials = user.name
     ? user.name
         .split(" ")
@@ -35,7 +35,7 @@ export default function UserAvatarDropDown({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="cursor-pointer">
+        <Avatar className="h-8 w-8 cursor-pointer">
           <AvatarImage
             src={user.image ?? undefined}
             referrerPolicy="no-referrer"
@@ -44,19 +44,20 @@ export default function UserAvatarDropDown({
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end">
+      <DropdownMenuContent className="w-72" forceMount>
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem disabled>
-          <User className="mr-2 h-4 w-4" />
-          {user.email}
-        </DropdownMenuItem>
+        <DropdownMenuGroup>
+          <DropdownMenuItem className="cursor-pointer">
+            <Link href="/profile">Profile</Link>
+            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href="/signOut" className="w-full flex items-center">
-            <LogOut className="mr-2 h-4 w-4" />
-            <span>Sign Out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+        <DropdownMenuItem className="text-sm" asChild>
+          <Link href="/signOut" className="w-full cursor-pointer">
+            <LogOut className="h-2 w-2" />
+            <span>Log Out</span>
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
