@@ -8,12 +8,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
+  DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOut } from "lucide-react";
+import { LogOut, User } from "lucide-react";
 import { User as AuthUser } from "@auth/core/types";
 import Link from "next/link";
-import { DropdownMenuGroup } from "@radix-ui/react-dropdown-menu";
 
 export default function UserAvatarDropDown({
   user,
@@ -44,20 +44,36 @@ export default function UserAvatarDropDown({
           <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-72" forceMount>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+      <DropdownMenuContent className="w-72" align="end">
+        <DropdownMenuLabel className="font-normal">
+          <div className="flex flex-col space-y-1">
+            <p className="text-sm font-medium leading-none">{user.name}</p>
+            <p className="text-xs leading-none text-muted-foreground">
+              {user.email}
+            </p>
+          </div>
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className="cursor-pointer">
-            <Link href="/profile">Profile</Link>
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          <DropdownMenuItem asChild>
+            <Link
+              href="/profile"
+              className="w-full cursor-pointer flex items-center"
+            >
+              <User className="mr-2 h-4 w-4" />
+              <span>Profile</span>
+              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+            </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-sm" asChild>
-          <Link href="/signOut" className="w-full cursor-pointer">
-            <LogOut className="h-2 w-2" />
-            <span>Log Out</span>
+        <DropdownMenuItem asChild>
+          <Link
+            href="/signOut"
+            className="w-full cursor-pointer flex items-center"
+          >
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Log out</span>
           </Link>
         </DropdownMenuItem>
       </DropdownMenuContent>

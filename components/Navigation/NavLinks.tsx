@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ReactElement } from "react";
 
-export default function NavLinks() {
+export default function NavLinks({ className }: { className?: string }) {
   const currentPath = usePathname();
   const navigationLinks: {
     id: number;
@@ -25,6 +25,7 @@ export default function NavLinks() {
         <li
           key={`link-${navLink.title}`}
           className={cn(
+            className,
             "flex items-center text-md text-secondary-foreground font-medium transition-colors hover:text-primary",
             {
               "text-primary": navLink.href === currentPath,
